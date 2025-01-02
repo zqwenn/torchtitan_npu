@@ -313,6 +313,15 @@ def get_peak_flops(device_name: str) -> int:
     elif "H200" in device_name:
         # data from https://www.nvidia.com/en-us/data-center/h200/
         return 989e12
+    # 添加NPU卡的算力
+    elif "Ascend910B1" in device_name:
+        return 400e12
+    elif "Ascend910B2" in device_name:
+        return 376e12
+    elif "Ascend910B3" in device_name:
+        return 313e12
+    elif "Ascend910B4" in device_name:
+        return 280e12
     else:  # for other GPU types, assume A100
         logger.warning(f"Peak flops undefined for: {device_name}, fallback to A100")
         return 312e12
