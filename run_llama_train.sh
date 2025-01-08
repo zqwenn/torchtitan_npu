@@ -22,6 +22,7 @@ fi
 PYTORCH_NPU_ALLOC_CONF="expandable_segments:True" \
 MULTI_STREAM_MEMORY_REUSE=2 \
 TASK_QUEUE_ENABLE=2 \
+CPU_AFFINITY_CONF=2 \
 torchrun --nproc_per_node=${NGPU} --rdzv_backend c10d --rdzv_endpoint="localhost:0" \
 --local-ranks-filter ${LOG_RANK} --role rank --tee 3 \
 train.py --job.config_file ${CONFIG_FILE} $overrides
